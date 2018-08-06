@@ -3,6 +3,9 @@ CREATE TABLE member(
   id VARCHAR (20) not null UNIQUE ,
   name VARCHAR (20) not null,
   password VARCHAR (20) not null,
+  regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  lastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
+  role VARCHAR (10) DEFAULT 'user'
 );
 
 CREATE TABLE Board(

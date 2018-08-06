@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,10 +8,11 @@
     <title>Hello Millky</title>
 </head>
 <body>
-<h2>Hello!</h2>
-
-    ${user.name}
-
-<div>JSP version</div>
+<h2>Create Board</h2>
+<form method="post">
+    <p><label>id</label><input name="title" type="text"/></p>
+    <p><label>password</label><textarea name="content" ></textarea></p>
+    <input type="submit" value="create" />
+</form>
 </body>
 </html>

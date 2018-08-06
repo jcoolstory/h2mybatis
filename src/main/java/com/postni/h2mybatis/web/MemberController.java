@@ -15,14 +15,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 
-
     @Autowired
     private MemberService memberService;
 
     @RequestMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("users",this.memberService.getUsers());
-        return "users.jsp";
+        return "user/users.jsp";
     }
 
     @RequestMapping("/user/{id}")
@@ -30,7 +29,7 @@ public class MemberController {
 
         Member user =  memberService.getUser(id);
         model.addAttribute("user", user);
-        return "userDetail.jsp";
+        return "user/userDetail.jsp";
     }
 
     @RequestMapping("/login")
@@ -46,11 +45,10 @@ public class MemberController {
     }
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    public String loginPost(
-            @RequestParam String id,
-            @RequestParam String password,
-            Model model,
-            HttpSession session) {
+    public String loginPost(@RequestParam String id,
+                            @RequestParam String password,
+                            Model model,
+                            HttpSession session) {
 
         if (memberService.loginCheck(id,password) == true) {
             session.setAttribute("isLogin", true);

@@ -1,6 +1,8 @@
 package com.postni.h2mybatis.domain;
 
 
+import java.util.Date;
+
 public class Member {
 
     long no;
@@ -10,6 +12,12 @@ public class Member {
     String id;
 
     String password;
+
+    Date regDate;
+
+    Date lastLogin;
+
+    String role;
 
     public long getNo() {
         return no;
@@ -43,4 +51,27 @@ public class Member {
         this.password = password;
     }
 
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
+
+    public Date getLastLogin() {
+        return lastLogin;
+    }
+
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

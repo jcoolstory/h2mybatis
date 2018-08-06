@@ -7,17 +7,12 @@
     <title>Hello Millky</title>
 </head>
 <body>
-<h2>Hello!</h2>
+<h2>Profile</h2>
 
-    <p><span>${board.no}</span>
-        <span><a href="/user/${board.author.name}"> ${board.author.name} </a></span>
-        <span>${board.createDate}</span>
-        <span>${board.title}</span>
-        <div>
-            <span>${board.content}</span>
-        </div>
-    </p>
+<p>id : ${user.id}</p>
+<p>name : ${user.name}</p>
+<p>register date : ${user.regDate}</p>
+<p>last login date : ${user.lastLogin}</p>
 
-<div>JSP version</div>
 </body>
 </html>

@@ -10,7 +10,9 @@ public class Board {
     private String title;
     private String content;
     private Date createDate;
-
+    private String category;
+    private String group;
+    
     public Board() {
         this.no = 0;
     }

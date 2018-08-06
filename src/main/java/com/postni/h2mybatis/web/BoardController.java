@@ -22,16 +22,14 @@ public class BoardController {
     public String getBoardList(Model model) {
 
         model.addAttribute("boards",boardMapper.getBoardList());
-        return "boards.jsp";
+        return "board/boards.jsp";
     }
 
     @RequestMapping(value="/{no}")
     public String getBoard(@PathVariable int no, Model model){
 
-        System.out.println(boardMapper.getBoard(no));
-
         model.addAttribute("board",boardMapper.getBoard(no));
-        return "boardDetail.jsp";
+        return "board/boardDetail.jsp";
     }
 
     @RequestMapping(value="/create", method = RequestMethod.GET)
@@ -41,7 +39,7 @@ public class BoardController {
             return "redirect:/";
         }
 
-        return "createBoard.jsp";
+        return "board/createBoard.jsp";
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)

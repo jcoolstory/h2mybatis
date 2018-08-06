@@ -5,7 +5,7 @@ CREATE TABLE member(
   password VARCHAR (20) not null,
   regDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   lastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
-  role VARCHAR (10) DEFAULT 'user'
+  role INT DEFAULT 0
 );
 
 CREATE TABLE Board(
@@ -15,3 +15,10 @@ CREATE TABLE Board(
   content VARCHAR (4000) not null,
   createDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
 );
+
+CREATE TABLE member_role (
+  no INT PRIMARY KEY AUTO_INCREMENT,
+  type INT Default 0,
+  name VARCHAR (20),
+  level INT DEFAULT 0
+)

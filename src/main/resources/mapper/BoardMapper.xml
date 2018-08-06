@@ -17,7 +17,8 @@
     </resultMap>
 
     <select id="getBoardList" resultMap="boardListVO">
-        SELECT board.no as no , title, createDate, member.name as name , member.id as id FROM board
+        SELECT board.no as no , title, createDate, member.name as name , member.id as id
+        FROM board
         LEFT JOIN member
         ON author = id
         ORDER BY no DESC
@@ -25,7 +26,8 @@
     </select>
 
     <select id="getBoard" parameterType="int" resultMap="boardListVO">
-        SELECT board.no as no , title, createDate, content, member.name as name , member.id as id FROM board
+        SELECT board.no as no , title, createDate, content, member.name as name , member.id as id
+        FROM board
         LEFT JOIN member
         ON author = id
         WHERE board.no = #{boardNo}

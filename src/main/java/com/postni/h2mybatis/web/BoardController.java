@@ -3,6 +3,7 @@ package com.postni.h2mybatis.web;
 import com.postni.h2mybatis.domain.Board;
 import com.postni.h2mybatis.domain.Member;
 import com.postni.h2mybatis.mapper.BoardMapper;
+import com.postni.h2mybatis.service.BoardService;
 import com.postni.h2mybatis.util.LoginRequire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,19 +17,19 @@ import javax.servlet.http.HttpSession;
 public class BoardController {
 
     @Autowired
-    private BoardMapper boardMapper;
+    private BoardService boardService;
 
     @RequestMapping(value="")
     public String getBoardList(Model model) {
 
-        model.addAttribute("boards",boardMapper.getBoardList());
+        model.addAttribute("boards",boardService.getBoardList());
         return "board/boards.jsp";
     }
 
     @RequestMapping(value="/{no}")
     public String getBoard(@PathVariable int no, Model model){
 
-        model.addAttribute("board",boardMapper.getBoard(no));
+        model.addAttribute("board",boardService.getBoard(no));
         return "board/boardDetail.jsp";
     }
 
@@ -55,7 +56,7 @@ public class BoardController {
         member.setId(id);
         board.setAuthor(member);
 
-        boardMapper.createBoard(board);
+        boardService.createBoard(board);
         return "redirect:/";
     }
 

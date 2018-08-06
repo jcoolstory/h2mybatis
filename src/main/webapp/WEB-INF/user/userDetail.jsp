@@ -13,6 +13,7 @@
 <p>name : ${user.name}</p>
 <p>register date : ${user.regDate}</p>
 <p>last login date : ${user.lastLogin}</p>
+<p>role : ${user.role.name}</p>
 
 </body>
 </html>

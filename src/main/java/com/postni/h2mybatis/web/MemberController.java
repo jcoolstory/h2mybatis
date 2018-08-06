@@ -27,7 +27,7 @@ public class MemberController {
     @RequestMapping("/user/{id}")
     public String getUser(@PathVariable String id, Model model) {
 
-        Member user =  memberService.getUser(id);
+        Member user =  memberService.getMemberDetail(id);
         model.addAttribute("user", user);
         return "user/userDetail.jsp";
     }

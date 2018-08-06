@@ -9,10 +9,37 @@
         SELECT * FROM member
     </select>
 
+    <resultMap id="roleMap" type="MemberRole">
+        <result property="type" column="type"></result>
+        <result property="name" column="role_name"></result>
+        <result property="level" column="level"></result>
+    </resultMap>
+
+    <resultMap id="memberDetailMap" type="Member">
+        <result property="id" column="id"></result>
+        <result property="name" column="name"></result>
+        <collection property="role"  resultMap="roleMap"></collection>
+    </resultMap>
+
     <select id="getMember" resultMap="memMap" parameterType="String">
         SELECT *
         FROM member
         WHERE id = #{id}
+    </select>
+
+    <select id="getMemberDetail" resultMap="memberDetailMap" parameterType="String">
+            SELECT
+            m.no ,
+            m.id,
+            m.name,
+            m.regDate,
+            role.type as type,
+            role.name as role_name,
+            role.level as level
+            FROM member as m
+            LEFT JOIN member_role as role
+            ON m.role = role.type
+            WHERE m.id = #{id}
     </select>
 
     <insert id="createMember" parameterType="Member">

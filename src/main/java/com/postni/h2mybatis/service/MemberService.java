@@ -27,4 +27,8 @@ public class MemberService {
     public Member getUser(String id) {
         return this.memberMapper.getMember(id);
     }
+
+    public Member getMemberDetail(String id) {
+        return this.memberMapper.getMemberDetail(id);
+    }
 }

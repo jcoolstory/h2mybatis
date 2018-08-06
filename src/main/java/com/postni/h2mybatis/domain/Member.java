@@ -17,7 +17,8 @@ public class Member {
 
     Date lastLogin;
 
-    String role;
+
+    MemberRole role;
 
     public long getNo() {
         return no;
@@ -67,11 +68,25 @@ public class Member {
         this.lastLogin = lastLogin;
     }
 
-    public String getRole() {
+
+    public MemberRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(MemberRole role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", regDate=" + regDate +
+                ", lastLogin=" + lastLogin +
+                ", role=" + role +
+                '}';
     }
 }

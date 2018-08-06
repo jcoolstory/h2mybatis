@@ -10,4 +10,5 @@ public interface MemberMapper {
     public int createMember(Member member);
     public List getMembers();
     public Member getMember(String id);
+    public Member getMemberDetail(String id);
 }

@@ -12,6 +12,8 @@ public class Board {
     private Date createDate;
     private String category;
     private String group;
+    private String extendInformation;
+    private String fileAttached;
     
     public Board() {
         this.no = 0;

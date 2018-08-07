@@ -1,6 +1,7 @@
 package com.postni.h2mybatis.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Board {
 
@@ -10,10 +11,13 @@ public class Board {
     private String title;
     private String content;
     private Date createDate;
+    private long hit;
     private String category;
     private String group;
     private String extendInformation;
     private String fileAttached;
+
+    private List<Comment> comments;
     
     public Board() {
         this.no = 0;
@@ -67,5 +71,14 @@ public class Board {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+
+    public long getHit() {
+        return hit;
+    }
+
+    public void setHit(long hit) {
+        this.hit = hit;
     }
 }

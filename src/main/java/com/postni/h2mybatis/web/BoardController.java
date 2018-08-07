@@ -1,7 +1,9 @@
 package com.postni.h2mybatis.web;
 
 import com.postni.h2mybatis.domain.Board;
+import com.postni.h2mybatis.domain.Comment;
 import com.postni.h2mybatis.domain.Member;
+import com.postni.h2mybatis.exceptions.WebPageNotFundException;
 import com.postni.h2mybatis.mapper.BoardMapper;
 import com.postni.h2mybatis.service.BoardService;
 import com.postni.h2mybatis.util.LoginRequire;
@@ -29,7 +31,10 @@ public class BoardController {
     @RequestMapping(value="/{no}")
     public String getBoard(@PathVariable int no, Model model){
 
-        model.addAttribute("board",boardService.getBoard(no));
+        Board board = boardService.getBoard(no);
+        model.addAttribute("board",board);
+
+
         return "board/boardDetail.jsp";
     }
 
@@ -59,5 +64,12 @@ public class BoardController {
         boardService.createBoard(board);
         return "redirect:/";
     }
+
+    @RequestMapping(value="/writeComment")
+    public String writeComment(@ModelAttribute Comment comment, HttpSession session) {
+        boardService.writeComment(comment);
+        return "";
+    }
+
 
 }

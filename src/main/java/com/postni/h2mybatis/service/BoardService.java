@@ -1,6 +1,8 @@
 package com.postni.h2mybatis.service;
 
 import com.postni.h2mybatis.domain.Board;
+import com.postni.h2mybatis.domain.Comment;
+import com.postni.h2mybatis.exceptions.WebPageNotFundException;
 import com.postni.h2mybatis.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ public class BoardService {
         return boardMapper.updateBoard(board);
     }
 
-    public long deleteBoard(int boardNo) {
+    public long deleteBoard(long boardNo) {
         return boardMapper.deleteBoard(boardNo);
     }
 
@@ -29,7 +31,23 @@ public class BoardService {
         return boardMapper.getBoardList();
     }
 
-    public Board getBoard(int boardNo) {
-        return boardMapper.getBoard(boardNo);
+    public Board getBoard(long boardNo) {
+
+        Board board = boardMapper.getBoard(boardNo);
+        if (board == null)
+            throw new WebPageNotFundException("No such page");
+
+        boardMapper.getComments(boardNo);
+        incrementBoardHit(board.getNo());
+
+        return board;
+    }
+
+    public int writeComment(Comment comment) {
+        return boardMapper.writeComment(comment);
+    }
+
+    public int incrementBoardHit(long no) {
+        return boardMapper.incrementBoardHit(no);
     }
 }

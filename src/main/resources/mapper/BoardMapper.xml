@@ -13,11 +13,12 @@
         <result property="title" column="title"></result>
         <result property="createDate" column="createDate"></result>
         <result property="content" column="content"/>
+        <result property="hit" column="hit"/>
         <collection property="author" resultMap="boardAuthor"></collection>
     </resultMap>
 
     <select id="getBoardList" resultMap="boardListVO">
-        SELECT board.no as no , title, createDate, member.name as name , member.id as id
+        SELECT  board.no as no , title, createDate, member.name as name , member.id as id, board.hit as hit
         FROM board
         LEFT JOIN member
         ON author = id
@@ -25,8 +26,11 @@
         LIMIT 20
     </select>
 
-    <select id="getBoard" parameterType="int" resultMap="boardListVO">
-        SELECT board.no as no , title, createDate, content, member.name as name , member.id as id
+    <select id="getBoard" parameterType="long" resultMap="boardListVO">
+        SELECT  board.no as no,
+                title, createDate, content, hit,
+                member.name as name,
+                member.id as id
         FROM board
         LEFT JOIN member
         ON author = id
@@ -48,6 +52,7 @@
         )
 
     </insert>
+
     <update id="updateBoard" parameterType="Board">
         UPDATE board
         SET
@@ -56,5 +61,10 @@
         WHERE no = #{no}
     </update>
 
+    <update id="incrementBoardHit" parameterType="long">
+        update board
+        set hit = hit+1
+        WHERE no = #{no}
+    </update>
 
 </mapper>

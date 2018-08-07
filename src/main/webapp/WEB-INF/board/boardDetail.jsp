@@ -9,15 +9,21 @@
 <body>
 <h2>${board.title}</h2>
 
-<p><span>${board.no}</span><span><a href="">list</a></span></p>
 <p>
-        <span><a href="/user/${board.author.name}"> ${board.author.name} </a></span>
+    <span>no. ${board.no}</span> | <span>hit : ${board.hit} </span><span><a href="/board">list</a></span>
+</p>
+<p>
+        <span><a href="/user/${board.author.id}"> ${board.author.name} </a></span>
         <span>${board.createDate}</span>
 </p>
-        <div>
-            <span>${board.content}</span>
-        </div>
+<div>
+    <span>${board.content}</span>
+</div>
 
-
+<c:forEach var="comment" items="comments">
+    <div>
+        ${comment.content}
+    </div>
+</c:forEach>
 </body>
 </html>

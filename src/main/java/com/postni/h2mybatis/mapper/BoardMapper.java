@@ -1,6 +1,7 @@
 package com.postni.h2mybatis.mapper;
 
 import com.postni.h2mybatis.domain.Board;
+import com.postni.h2mybatis.domain.Comment;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -8,11 +9,13 @@ import java.util.List;
 @Mapper
 public interface BoardMapper {
 
-    public long createBoard(Board board);
-    public long updateBoard(Board board);
-    public long deleteBoard(int boardNo);
+    long createBoard(Board board);
+    long updateBoard(Board board);
+    long deleteBoard(long boardNo);
 
-    public List getBoardList();
-    public Board getBoard(int boardNo);
-
+    List getBoardList();
+    Board getBoard(long boardNo);
+    List getComments(long boardNo);
+    int writeComment(Comment comment);
+    int incrementBoardHit(long no);
 }

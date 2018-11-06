@@ -24,6 +24,9 @@
     <div>
         ${comment.content}
     </div>
+    <div>
+        ${comment.createDate}
+    </div>
 </c:forEach>
 </body>
 </html>
